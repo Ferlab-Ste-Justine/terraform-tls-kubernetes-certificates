@@ -1,7 +1,6 @@
 #https://kubernetes.io/docs/setup/best-practices/certificates/
 
 resource "tls_self_signed_cert" "ca" {
-  key_algorithm   = var.ca_key_algorithm
   private_key_pem = var.ca_key
 
   subject {
@@ -21,7 +20,6 @@ resource "tls_self_signed_cert" "ca" {
 }
 
 resource "tls_self_signed_cert" "etcd_ca" {
-  key_algorithm   = var.etcd_ca_key_algorithm
   private_key_pem = var.etcd_ca_key
 
   subject {
@@ -41,7 +39,6 @@ resource "tls_self_signed_cert" "etcd_ca" {
 }
 
 resource "tls_self_signed_cert" "front_proxy_ca" {
-  key_algorithm   = var.front_proxy_ca_key_algorithm
   private_key_pem = var.front_proxy_ca_key
 
   subject {
@@ -61,7 +58,6 @@ resource "tls_self_signed_cert" "front_proxy_ca" {
 }
 
 resource "tls_cert_request" "client" {
-  key_algorithm   = var.client_key_algorithm
   private_key_pem = var.client_key
 
   subject {
@@ -72,7 +68,6 @@ resource "tls_cert_request" "client" {
 
 resource "tls_locally_signed_cert" "client" {
   cert_request_pem   = tls_cert_request.client.cert_request_pem
-  ca_key_algorithm   = var.ca_key_algorithm
   ca_private_key_pem = var.ca_key
   ca_cert_pem        = tls_self_signed_cert.ca.cert_pem
 
