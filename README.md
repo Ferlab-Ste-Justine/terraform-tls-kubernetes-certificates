@@ -78,7 +78,7 @@ resource "tls_private_key" "client" {
 }
 
 module "certificates" {
-  source = "git::https://github.com/Ferlab-Ste-Justine/kubernetes-certificates.git"
+  source = "git::https://github.com/Ferlab-Ste-Justine/terraform-tls-kubernetes-certificates.git"
   ca_key = tls_private_key.ca.private_key_pem
   etcd_ca_key = tls_private_key.etcd_ca.private_key_pem
   front_proxy_ca_key = tls_private_key.front_proxy_ca.private_key_pem
