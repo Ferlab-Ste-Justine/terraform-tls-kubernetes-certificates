@@ -89,3 +89,9 @@ variable "client_key_algorithm" {
   type = string
   default = "RSA"
 }
+
+variable "legacy_defaults" {
+  description = "If set to true, the unspecified subject fields will be set to the defaults of version 3 (empty values) of the tls provider instead of version 4 (omitted)"
+  type        = bool
+  default     = false
+}

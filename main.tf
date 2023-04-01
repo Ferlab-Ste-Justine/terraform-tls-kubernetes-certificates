@@ -5,6 +5,14 @@ resource "tls_self_signed_cert" "ca" {
 
   subject {
     common_name  = "kubernetes"
+    country = var.legacy_defaults ? "" : null
+    locality = var.legacy_defaults ? "" : null
+    organization = var.legacy_defaults ? "" : null
+    organizational_unit = var.legacy_defaults ? "" : null
+    postal_code = var.legacy_defaults ? "" : null
+    province = var.legacy_defaults ? "" : null
+    serial_number = var.legacy_defaults ? "" : null
+    street_address = var.legacy_defaults ? [] : null
   }
 
   validity_period_hours = var.ca_certificate_lifespan*24
@@ -24,6 +32,14 @@ resource "tls_self_signed_cert" "etcd_ca" {
 
   subject {
     common_name  = "etcd-ca"
+    country = var.legacy_defaults ? "" : null
+    locality = var.legacy_defaults ? "" : null
+    organization = var.legacy_defaults ? "" : null
+    organizational_unit = var.legacy_defaults ? "" : null
+    postal_code = var.legacy_defaults ? "" : null
+    province = var.legacy_defaults ? "" : null
+    serial_number = var.legacy_defaults ? "" : null
+    street_address = var.legacy_defaults ? [] : null
   }
 
   validity_period_hours = var.etcd_ca_certificate_lifespan*24
@@ -43,6 +59,14 @@ resource "tls_self_signed_cert" "front_proxy_ca" {
 
   subject {
     common_name  = "front-proxy-ca"
+    country = var.legacy_defaults ? "" : null
+    locality = var.legacy_defaults ? "" : null
+    organization = var.legacy_defaults ? "" : null
+    organizational_unit = var.legacy_defaults ? "" : null
+    postal_code = var.legacy_defaults ? "" : null
+    province = var.legacy_defaults ? "" : null
+    serial_number = var.legacy_defaults ? "" : null
+    street_address = var.legacy_defaults ? [] : null
   }
 
   validity_period_hours = var.front_proxy_ca_certificate_lifespan*24
@@ -63,6 +87,13 @@ resource "tls_cert_request" "client" {
   subject {
     common_name  = "kubernetes-admin"
     organization = "system:masters"
+    country = var.legacy_defaults ? "" : null
+    locality = var.legacy_defaults ? "" : null
+    organizational_unit = var.legacy_defaults ? "" : null
+    postal_code = var.legacy_defaults ? "" : null
+    province = var.legacy_defaults ? "" : null
+    serial_number = var.legacy_defaults ? "" : null
+    street_address = var.legacy_defaults ? [] : null
   }
 }
 
